@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sboniso Mdluli | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #3b82f6;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .social-icon {
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #3b82f6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="https://sbonisomdluli.github.io/Portfolio/" onclick="navigateTo('home')" class="flex items-center gap-2 group">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:scale-110 transition-transform">
+                    <rect width="40" height="40" rx="10" fill="#3b82f6"/>
+                    <path d="M12 14L18 20L12 26" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 26H28" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span class="font-bold text-xl text-gray-800 tracking-tight">Phoenix</span>
+            </a>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex gap-8">
+                <button onclick="navigateTo('home')" class="nav-link font-medium" id="nav-home">Home</button>
+                <button onclick="navigateTo('about')" class="nav-link font-medium" id="nav-about">About Me</button>
+                <button onclick="navigateTo('contact')" class="nav-link font-medium" id="nav-contact">Contact Us</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4 shadow-lg">
+            <button onclick="navigateTo('home')" class="text-left text-gray-600 font-medium">Home</button>
+            <button onclick="navigateTo('about')" class="text-left text-gray-600 font-medium">About Me</button>
+            <button onclick="navigateTo('contact')" class="text-left text-gray-600 font-medium">Contact Us</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-12">
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+            <div class="grid md:grid-cols-2 gap-12 items-center min-h-[60vh]">
+                <!-- Text Content -->
+                <div class="space-y-6 order-2 md:order-1">
+                    <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold tracking-wide">
+                        Welcome to my portfolio
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                        Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Sboniso Mdluli</span>.
+                    </h1>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        I'm a passionate cyber security specialist specializing in protecting digital assets and infrastructure. Currently, I'm focused on mastering web development.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <button onclick="navigateTo('contact')" class="btn-primary px-6 py-3 text-white font-medium rounded-lg shadow-md">
+                            Get In Touch
+                        </button>
+                        <button onclick="navigateTo('about')" class="px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors">
+                            More About Me
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image & Video -->
+                <div class="space-y-8 order-1 md:order-2">
+                    <!-- Profile Image -->
+                    <div class="relative group mx-auto w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-3xl rotate-6 group-hover:rotate-3 transition-transform opacity-70"></div>
+                        <img src="WhatsApp Image 2026-05-19 at 22.21.04.jpeg" 
+                             alt="Sboniso Mdluli Profile" 
+                             class="relative w-full h-full object-cover rounded-3xl shadow-xl border-4 border-white">
+                    </div>
+
+                    <!-- Video Section -->
+                    <div class="mt-8">
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Featured Video</h3>
+                        <div class="video-container bg-gray-200">
+                            <iframe width="560" height="315" img src="WhatsApp Image 2026-05-19 at 22.21.03 (1).jpeg" title="Coding Setup" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME PAGE -->
+        <section id="about" class="page">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold text-gray-900">About Me</h2>
+                    <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Hello! My name is Sboniso, and I enjoy creating things that live on the internet. My interest in web development started back in 2025 when i was doing cyber security                           when I decided to try developing wepsites playing with code using visual studio watching youtube videos taught me a lot about HTML & CSS!
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-lg mt-4">
+                        Fast-forward to today, i have a little knowledge in the field of web development but i have a lot knowledge in cyber security.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-code text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Ruby</h3>
+                        <p class="text-sm text-gray-500">
+                            Expert in Java, and Python. Skilled in network security, ethical hacking, and vulnerability assessment. Dedicated to staying updated on the latest cybersecurity trends and best practices.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-purple-600"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">Cyber Security</h3>
+                        <p class="text-sm text-gray-500">
+                            Passionate about protecting digital assets and maintaining secure coding practices. Proficient in penetration testing and risk assessment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">HTML5</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">CSS3</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">JavaScript</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Tailwind</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">React</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Git</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Node.js</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Ruby</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Python</span>
+                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600">Cyber Security</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT US PAGE -->
+        <section id="contact" class="page">
+            <div class="max-w-2xl mx-auto text-center space-y-6">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-bold text-gray-900">Get In Touch</h2>
+                    <p class="text-gray-500">
+                        Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                </div>
+
+                <a href="mailto:alex.chen@example.com" class="inline-block btn-primary px-8 py-4 text-white font-medium rounded-lg shadow-lg text-lg">
+                    Say Hello <i class="fas fa-paper-plane ml-2"></i>
+                </a>
+
+                <div class="pt-8 grid md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone-alt text-blue-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Phone</h4>
+                            <p class="text-gray-500 mt-1">0764772405</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-green-600 text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Location</h4>
+                            <p class="text-gray-500 mt-1">Newcastle,Madadeni</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-gray-500 text-sm">
+                    &copy; 2026 siboniso Mdluli   . All rights reserved.
+                </div>
+                
+                <div class="flex gap-6">
+                    <a href="#" target="_blank" class="social-icon text-gray-400 text-xl" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon text-gray-400 text-xl" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon text-gray-400 text-xl" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="tel:0764772405" class="social-icon text-gray-400 text-xl" title="Call Me">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Router Logic
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.classList.add('active');
+            }
+
+            // Update Nav Active State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            navigateTo('home');
+        });
+    </script>
+</body>
+</html>
+
